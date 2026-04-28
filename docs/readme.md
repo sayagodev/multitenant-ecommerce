@@ -23,3 +23,6 @@ TanStack React Query > Server Components
 1. Install the dependencies
 2. Follow the guide
 
+## Authentication with Payload
+
+
