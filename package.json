@@ -1,13 +1,16 @@
 {
   "name": "multitenant-ecommerce",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:types": "payload generate:types"
+    "generate:types": "payload generate:types",
+    "db:fresh": "payload migrate:fresh",
+    "db:seed": "bun run src/seed.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.4.1",
