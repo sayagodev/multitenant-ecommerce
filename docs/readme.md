@@ -16,3 +16,10 @@ and put all the files there
 - add the database string, replace the user and password at the end
 put the name of the app ".../ecommerce"
 - Create a new user in /admin
+
+## tRPC set up
+
+TanStack React Query > Server Components
+1. Install the dependencies
+2. Follow the guide
+
