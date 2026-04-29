@@ -1,11 +1,13 @@
 'use client';
 
-import { ListFilterIcon, SearchIcon } from "lucide-react";
+import { BookmarkCheckIcon, ListFilterIcon, SearchIcon } from "lucide-react";
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { CategoriesSidebar } from "./categories-sidebar";
 import { useState } from "react";
+import Link from "next/link"
+import { useSession } from "@/hooks/use-session";
 
 interface SearchInputProps {
   disabled?: boolean;
@@ -15,6 +17,8 @@ export const SearchInput = ({
   disabled,
 }: SearchInputProps) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+
+  const session = useSession()
 
   return (
     <div className="flex items-center gap-2 w-full">
@@ -30,7 +34,17 @@ export const SearchInput = ({
       >
         <ListFilterIcon />
       </Button>
-      {/* TODO: Add library button */}
+      {session.data?.user && (
+        <Button
+          variant={"elevated"}
+          asChild
+        >
+          <Link href={"/library"}>
+            <BookmarkCheckIcon />
+            Library
+          </Link>
+        </Button>
+      )}
     </div>
   );
 };
