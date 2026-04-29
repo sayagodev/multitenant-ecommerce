@@ -25,4 +25,10 @@ TanStack React Query > Server Components
 
 ## Authentication with Payload
 
-
+1. Create a procedure with the diferentes methods:
+    - login, register, logout, session
+2. We can set manually the cookie and use the Local API, but this can cause problems, so
+the best way is using the REST API that Payload give us. Automatically set cookie on login.
+3. But for this project, we only sustract the setCookie logic and create a function in
+utils. But using the ctx.db.config.cookiePrefix of Payload to load the correct cookie.
+4. Important! invalidate the session so the user can see the 'dashboard' option.
