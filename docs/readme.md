@@ -1,6 +1,4 @@
-# Payload
-
-- Choose a database in this case MongoDB, why?
+# Payload - Choose a database in this case MongoDB, why?
 - Flexible, schemaless structure
 - Great for nested + relational data
 - Works out of the box with Payload
@@ -32,3 +30,12 @@ the best way is using the REST API that Payload give us. Automatically set cooki
 3. But for this project, we only sustract the setCookie logic and create a function in
 utils. But using the ctx.db.config.cookiePrefix of Payload to load the correct cookie.
 4. Important! invalidate the session so the user can see the 'dashboard' option.
+
+## Multi Tenancy
+1. Crear Tenant Collection 
+2. Add the Multi Tenant plugin, is important that the version of the plugin matches the
+version of Payload installed.
+3. Add the plugin to the payload.config.ts, and attach the collection.
+4. We need to update de User collection to add roles, because we need separate
+the "super-admin" and "user".
+5. In the procedure of user creation, create the tenant.

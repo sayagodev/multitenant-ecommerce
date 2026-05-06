@@ -19,7 +19,7 @@ export const ProductList = ({ category }: Props) => {
     {
       ...filters,
       category,
-      limit: 1,
+      limit: DEFAULT_LIMIT,
     },
     {
       getNextPageParam: (lastPage) => {
