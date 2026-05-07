@@ -12,6 +12,7 @@ import { Categories } from "./collections/Categories";
 import { Products } from "./collections/Products";
 import { Tags } from "./collections/Tags";
 import { Tenants } from "./collections/Tenants";
+import { Config } from "./payload-types"
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -34,7 +35,7 @@ export default buildConfig({
   }),
   sharp,
   plugins: [
-    multiTenantPlugin({
+    multiTenantPlugin<Config>({
       collections: {
         products: {},
       },
