@@ -3,9 +3,26 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import Image from "next/image";
 import Link from "next/link";
+import { Button } from "@/components/ui/button"
 
 import { useTRPC } from "@/trpc/client";
 import { generateTenantURL } from "@/lib/utils";
+import dynamic from "next/dynamic";
+import { ShoppingCartIcon } from "lucide-react";
+
+const CheckoutButton = dynamic(
+  () => import("@/modules/checkout/ui/components/checkout-button").then(
+    (mod) => mod.CheckoutButton
+  ),
+  {
+    ssr: false,
+    loading: () => (
+      <Button disabled className="bg-white">
+        <ShoppingCartIcon className="text-black" />
+      </Button>
+    )
+  },
+)
 
 interface Props {
   slug: string;
@@ -30,6 +47,7 @@ export const Navbar = ({ slug }: Props) => {
           )}
           <p className="text-xl">{data.name}</p>
         </Link>
+        <CheckoutButton hideIfEmpty tenantSlug={slug} />
       </div>
     </nav>
   );
@@ -40,7 +58,10 @@ export const NavbarSkeleton = () => {
     <nav className="h-20 border-b font-medium bg-white">
       <div className="max-w-(--breakpoint-xl) mx-auto flex justify-between items-center h-full px-4 lg:px-12">
         <div />
-        {/* TODO: Skeleton for checkout button */}
+
+        <Button disabled className="bg-white">
+          <ShoppingCartIcon className="text-black" />
+        </Button>
       </div>
     </nav>
   );

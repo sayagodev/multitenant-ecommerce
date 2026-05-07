@@ -39,3 +39,7 @@ version of Payload installed.
 4. We need to update de User collection to add roles, because we need separate
 the "super-admin" and "user".
 5. In the procedure of user creation, create the tenant.
+
+## Card functionality with Zustand
+1. add zustand
+2.
